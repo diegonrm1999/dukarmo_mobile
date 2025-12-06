@@ -1,1 +1,16 @@
 build/
+.dart_tool/
+.packages
+.pub/
+.idea/
+.vscode/
+*.iml
+*.log
+*.lock
+*.tmp
+*.swp
+.DS_Store
+coverage/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
