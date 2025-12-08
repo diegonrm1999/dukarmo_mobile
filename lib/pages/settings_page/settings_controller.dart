@@ -13,11 +13,19 @@ import 'package:go_router/go_router.dart';
 class SettingsController {
   final ValueNotifier<bool> isLoading = ValueNotifier(false);
   final sessionService = getSingleton<SessionService>();
-  final navigationService = getSingleton<NavigationService>();
+  final _navigationService = getSingleton<NavigationService>();
   final _snackBar = getSingleton<Snackbar>();
+
+  bool get isDailySummaryEnabled =>
+      sessionService.getRole() == UserRole.Manager ||
+      sessionService.getRole() == UserRole.Cashier;
 
   void dispose() {
     isLoading.dispose();
+  }
+
+  Future<void> onSummaryPressed() async {
+    _navigationService.offAllNamed(AppRoutes.summary);
   }
 
   Future<void> onLogoutPressed(BuildContext context) async {

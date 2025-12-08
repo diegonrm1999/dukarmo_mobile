@@ -34,29 +34,58 @@ class OrderClientInfo extends StatelessWidget {
             const SizedBox(height: 12),
             Row(
               children: [
-                const Icon(Icons.person, color: AppColors.primaryButton),
+                const Icon(
+                  Icons.person,
+                  color: AppColors.primaryButton,
+                  size: 20,
+                ),
                 const SizedBox(width: 8),
-                Text(client.name, style: TextStyleWrapper.mdBlack),
+                Expanded(
+                  child: Text(
+                    client.name,
+                    style: TextStyleWrapper.mdBlack,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
             ),
             if (client.phone != null) ...[
               const SizedBox(height: 6),
               Row(
                 children: [
-                  const Icon(Icons.phone, color: AppColors.primaryButton),
+                  const Icon(
+                    Icons.phone,
+                    color: AppColors.primaryButton,
+                    size: 20,
+                  ),
                   const SizedBox(width: 8),
-                  Text(client.phone!, style: TextStyleWrapper.mdBlack),
+                  Expanded(
+                    child: Text(
+                      client.phone!,
+                      style: TextStyleWrapper.mdBlack,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               ),
             ],
             const Divider(height: 24),
             Row(
               children: [
-                const Icon(Icons.content_cut, color: AppColors.primaryButton),
+                const Icon(
+                  Icons.content_cut,
+                  color: AppColors.primaryButton,
+                  size: 20,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     "Estilista: ${stylist.firstName} ${stylist.lastName}",
+                    style: TextStyleWrapper.mdBlack,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
@@ -64,11 +93,18 @@ class OrderClientInfo extends StatelessWidget {
             const SizedBox(height: 6),
             Row(
               children: [
-                const Icon(Icons.attach_money, color: AppColors.primaryButton),
+                const Icon(
+                  Icons.attach_money,
+                  color: AppColors.primaryButton,
+                  size: 20,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     "Cajero: ${cashier.firstName} ${cashier.lastName}",
+                    style: TextStyleWrapper.mdBlack,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

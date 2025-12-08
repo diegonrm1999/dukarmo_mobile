@@ -7,7 +7,6 @@ import 'package:dukarmo_app/core/theme/color/colors.dart';
 import 'package:dukarmo_app/core/theme/wrapper/text_style_wrapper.dart';
 import 'package:dukarmo_app/enums/user_role.dart';
 import 'package:dukarmo_app/routes/app_routes/app_routes.dart';
-import 'package:dukarmo_app/services/navigation_service.dart';
 import 'package:dukarmo_app/services/session_service.dart';
 import 'package:dukarmo_app/widgets/snackbar.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';

@@ -48,6 +48,7 @@ class TransactionModalController extends ChangeNotifier {
   Future<void> restoreOrder(BuildContext context) async {
     try {
       isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 3));
       await _orderService.restoreOrder(orderId);
       OrderEventBus.notifyNewOrderCreated(EventType.transaction);
       isLoading.value = false;

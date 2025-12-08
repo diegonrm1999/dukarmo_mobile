@@ -23,11 +23,26 @@ class OrderTreatmentList extends StatelessWidget {
             ...treatments.map((t) {
               return ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.spa, color: AppColors.primaryButton),
-                title: Text(t.treatment.name, style: TextStyleWrapper.mdBlack),
-                trailing: Text(
-                  "S/.${t.price.toStringAsFixed(2)}",
-                  style: TextStyleWrapper.mdBold,
+                leading: const Icon(
+                  Icons.spa,
+                  color: AppColors.primaryButton,
+                  size: 20,
+                ),
+                title: Text(
+                  t.treatment.name,
+                  style: TextStyleWrapper.mdBlack,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                trailing: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 140),
+                  child: Text(
+                    "S/.${t.price.toStringAsFixed(2)}",
+                    style: TextStyleWrapper.mdBold,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.right,
+                  ),
                 ),
               );
             }),

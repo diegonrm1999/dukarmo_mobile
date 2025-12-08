@@ -14,62 +14,84 @@ class TransactionModalContent extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(Icons.calendar_today, color: Colors.pink),
-            SizedBox(width: 8),
-            Text('Fecha: ${controller.order?.createdAt ?? ""}'),
-          ],
-        ),
-        SizedBox(height: 8),
-        Row(
-          children: [
-            Icon(Icons.person, color: Colors.pink),
-            SizedBox(width: 8),
-            Text('Cliente: ${controller.order?.client.name ?? ""}'),
-          ],
-        ),
-        SizedBox(height: 8),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(Icons.content_cut, color: Colors.pink),
-            SizedBox(width: 8),
+            const Icon(Icons.calendar_today, color: Colors.pink, size: 20),
+            const SizedBox(width: 8),
             Expanded(
               child: Text(
-                'Servicio: ${controller.serviceNames}',
+                'Fecha: ${controller.order?.createdAt ?? ""}',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Row(
           children: [
-            Icon(Icons.attach_money, color: Colors.pink),
-            SizedBox(width: 8),
-            Text(
-              'Precio: S/ ${controller.order?.totalPrice.toStringAsFixed(2) ?? ""}',
+            const Icon(Icons.person, color: Colors.pink, size: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                'Cliente: ${controller.order?.client.name ?? ""}',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 8),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.content_cut, color: Colors.pink, size: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                'Servicio: ${controller.serviceNames}',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            const Icon(Icons.attach_money, color: Colors.pink, size: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                'Precio: S/ ${controller.order?.totalPrice.toStringAsFixed(2) ?? ""}',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
         ValueListenableBuilder<bool>(
           valueListenable: controller.isLoading,
-          builder: (_, isLoading, __) => ElevatedButton.icon(
-            onPressed: isLoading
-                ? null
-                : () => controller.restoreOrder(context),
-            icon: Icon(Icons.restore),
-            label: Text('Restaurar orden'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: isLoading
-                  ? AppColors.homeBackground
-                  : Colors.pink.shade300,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+          builder: (_, isLoading, __) => SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: isLoading
+                  ? null
+                  : () => controller.restoreOrder(context),
+              icon: const Icon(Icons.restore),
+              label: const Text('Restaurar orden'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: isLoading
+                    ? AppColors.homeBackground
+                    : Colors.pink.shade300,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             ),
           ),
         ),

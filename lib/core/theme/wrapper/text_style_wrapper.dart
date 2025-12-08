@@ -14,6 +14,12 @@ abstract class TextStyleWrapper {
     fontSize: FontSizes.fontSizeMd,
     fontWeight: FontWeights.fontWeightMedium,
   );
+  static const mdGreyMedium = TextStyle(
+    fontFamily: FontFamily.fontFamilyDefault,
+    fontSize: FontSizes.fontSizeMd,
+    fontWeight: FontWeights.fontWeightMedium,
+    color: Colors.black54,
+  );
   static const lgMedium = TextStyle(
     fontFamily: FontFamily.fontFamilyDefault,
     fontSize: FontSizes.fontSizeLg,
@@ -57,6 +63,11 @@ abstract class TextStyleWrapper {
   static const xlBold = TextStyle(
     fontFamily: FontFamily.fontFamilyDefault,
     fontSize: FontSizes.fontSizeXl,
+    fontWeight: FontWeights.fontWeightBold,
+  );
+  static const xxlBold = TextStyle(
+    fontFamily: FontFamily.fontFamilyDefault,
+    fontSize: FontSizes.fontSizeXxl,
     fontWeight: FontWeights.fontWeightBold,
   );
   static const smRegular = TextStyle(

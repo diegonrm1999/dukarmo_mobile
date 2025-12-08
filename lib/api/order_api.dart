@@ -68,4 +68,11 @@ class OrderApi {
       method: HttpMethod.post,
     );
   }
+
+  Future<HttpResult> getDailySummary(String date) async {
+    return await _http.sendRequest(
+      "orders/summary/daily?date=$date",
+      method: HttpMethod.get,
+    );
+  }
 }

@@ -12,13 +12,44 @@ class SettingsPage extends StatelessWidget {
     return Provider(
       create: (_) => SettingsController(),
       dispose: (_, controller) => controller.dispose(),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-          width: double.infinity,
-          child: SettingsPageButton(),
-        ),
+      child: Builder(
+        builder: (context) {
+          final controller = context.read<SettingsController>();
+          return Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+              width: double.infinity,
+              child: Column(
+                children: [
+                  if (controller.isDailySummaryEnabled) ...[
+                    const SummaryButton(),
+                    const SizedBox(height: 25),
+                  ],
+                  const SettingsPageButton(),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class SummaryButton extends StatelessWidget {
+  const SummaryButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = context.read<SettingsController>();
+    return SizedBox(
+      width: double.infinity,
+      height: 55,
+      child: LoadingContextButton(
+        text: 'Resumen Diario',
+        onPressed: () => controller.onSummaryPressed(),
+        backgroundColor: AppColors.primaryButton,
       ),
     );
   }

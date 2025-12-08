@@ -1,4 +1,5 @@
 import 'package:dukarmo_app/api/order_api.dart';
+import 'package:dukarmo_app/domain/daily_summary.dart';
 import 'package:dukarmo_app/domain/dto/order_dto.dart';
 import 'package:dukarmo_app/domain/list_item/order_list_item.dart';
 import 'package:dukarmo_app/domain/order.dart';
@@ -92,6 +93,15 @@ class OrderManager extends BaseManager<OrderApi> {
     final result = await api.sendReceipt(id);
     if (result.error == null) {
       return;
+    } else {
+      throw Exception("Error al enviar el recibo");
+    }
+  }
+
+  Future<DailySummary> getDailySummary(String date) async {
+    final result = await api.getDailySummary(date);
+    if (result.error == null) {
+      return DailySummary.fromJson(result.data);
     } else {
       throw Exception("Error al enviar el recibo");
     }

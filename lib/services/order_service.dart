@@ -1,4 +1,5 @@
 import 'package:dukarmo_app/core/locator.dart';
+import 'package:dukarmo_app/domain/daily_summary.dart';
 import 'package:dukarmo_app/domain/dto/order_dto.dart';
 import 'package:dukarmo_app/domain/list_item/order_list_item.dart';
 import 'package:dukarmo_app/domain/order.dart';
@@ -50,5 +51,12 @@ class OrderService {
 
   Future<void> sendReceipt(String id) async {
     await orderManager.sendReceipt(id);
+  }
+
+  Future<DailySummary> fetchDailySummary() async {
+    final now = DateTime.now();
+    final date =
+        "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
+    return orderManager.getDailySummary(date);
   }
 }

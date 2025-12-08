@@ -6,4 +6,5 @@ class AppRoutes {
   static const String orderDetail = '/detail';
   static const String orderCheckout = '/checkout';
   static const String complete = '/complete';
+  static const String summary = '/summary';
 }

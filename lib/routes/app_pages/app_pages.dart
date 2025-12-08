@@ -1,5 +1,6 @@
 import 'package:dukarmo_app/domain/order.dart';
 import 'package:dukarmo_app/pages/order_detail_page/order_detail_page.dart';
+import 'package:dukarmo_app/pages/summary_page/summary_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:dukarmo_app/pages/checkout_page/checkout_page.dart';
@@ -49,10 +50,18 @@ class AppPages {
           );
         },
       ),
+      GoRoute(
+        path: AppRoutes.summary,
+        pageBuilder: (context, state) {
+          return _buildPage(
+            state: state,
+            child: SummaryPage(),
+          );
+        },
+      ),
     ],
   );
 
-  /// Helper para crear rutas con transición elegante
   static GoRoute _buildRoute({required String path, required Widget child}) {
     return GoRoute(
       path: path,
@@ -60,7 +69,6 @@ class AppPages {
     );
   }
 
-  /// Transición global: fade + scale suave
   static CustomTransitionPage _buildPage({
     required GoRouterState state,
     required Widget child,

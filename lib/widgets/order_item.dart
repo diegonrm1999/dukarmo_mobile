@@ -64,13 +64,22 @@ class OrderItem extends StatelessWidget {
                         style: TextStyleWrapper.smRegularWhite.copyWith(
                           letterSpacing: 0.5,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 6),
-                      Text(clientName, style: TextStyleWrapper.mdBoldWhite),
+                      Text(
+                        clientName,
+                        style: TextStyleWrapper.mdBoldWhite,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                       const SizedBox(height: 4),
                       Text(
                         'Profesional: $operatorName',
                         style: TextStyleWrapper.smRegularWhite,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 4),
                       Row(
@@ -81,10 +90,14 @@ class OrderItem extends StatelessWidget {
                             color: Colors.white70,
                           ),
                           const SizedBox(width: 4),
-                          Text(
-                            date,
-                            style: TextStyleWrapper.smRegularWhite.copyWith(
-                              color: Colors.white70,
+                          Flexible(
+                            child: Text(
+                              date,
+                              style: TextStyleWrapper.smRegularWhite.copyWith(
+                                color: Colors.white70,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
@@ -95,11 +108,18 @@ class OrderItem extends StatelessWidget {
                 const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'S/${totalPrice.toStringAsFixed(2)}',
-                      style: TextStyleWrapper.mdBoldWhite.copyWith(
-                        fontSize: 20,
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 100),
+                      child: Text(
+                        'S/${totalPrice.toStringAsFixed(2)}',
+                        style: TextStyleWrapper.mdBoldWhite.copyWith(
+                          fontSize: 20,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.right,
                       ),
                     ),
                     const SizedBox(height: 6),
