@@ -55,8 +55,7 @@ class OrderService {
 
   Future<DailySummary> fetchDailySummary() async {
     final now = DateTime.now();
-    final date =
-        "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
+    final date = now.toUtc().toIso8601String().split('T')[0];
     return orderManager.getDailySummary(date);
   }
 }

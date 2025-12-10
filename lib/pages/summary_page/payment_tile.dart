@@ -15,27 +15,28 @@ class PaymentTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
         boxShadow: const [
           BoxShadow(blurRadius: 4, offset: Offset(0, 1), color: Colors.black12),
         ],
-        border: Border.all(
-          color: Color(0xFFE0E0E0),
-          style: BorderStyle.solid,
-          width: 1,
-        ),
+        border: Border.all(color: Color(0xFFE0E0E0), width: 1),
       ),
       child: Column(
         children: [
           Icon(icon, color: Colors.pink, size: 28),
           const SizedBox(height: 10),
-          Text(
-            amount,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Text(
+              amount,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
+
           Text(label, style: const TextStyle(color: Colors.black54)),
         ],
       ),

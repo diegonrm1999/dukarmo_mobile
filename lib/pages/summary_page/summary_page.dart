@@ -118,7 +118,11 @@ class SummaryPage extends StatelessWidget {
         children: [
           Text('Ganancia total', style: TextStyleWrapper.mdGreyMedium),
           SizedBox(height: 3),
-          Text('S/. $amount', style: TextStyleWrapper.xxlBold),
+
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Text('S/. $amount', style: TextStyleWrapper.xxlBold),
+          ),
         ],
       ),
     );
